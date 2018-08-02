@@ -2,6 +2,7 @@ package com.revature.main;
 
 import java.util.Arrays;
 
+import com.revature.exception.OutOfFuelException;
 //just saves us typing!! 
 import com.revature.oop.*; //imports all classes in com.revature.oop package
 
@@ -9,7 +10,7 @@ public class Driver {
 
 	public static void main(String[] args) {
 		
-		funWithVehicleArraysAndCasting();
+		funWithExceptions();
 
 	}
 
@@ -90,7 +91,11 @@ public class Driver {
 		for( Vehicle vehicle : vehicleArray ) {
 			
 			if (vehicle != null) { //to prevent NullPointerExceptions
-				vehicle.go();
+				try {
+					vehicle.go();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				//use instanceof operator to avoid ClassCastExceptions
 				//((ChargingRhino) vehicle).setHornLength(40);
 				System.out.println(vehicle.getClass());
@@ -116,5 +121,24 @@ public class Driver {
 		rhino.getHornLength();
 		
 	}
+	
+	public static void funWithExceptions() {
+		Car c1 = new Car(1982, 40);
+		Car c2 = new Car(2007, 3);
+		try {
+			c2.go();
+			c1.go();
+		} catch (OutOfFuelException e) {
+			e.printStackTrace();
+			//System.out.println(e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			System.out.println("this always runs");
+		}
+		
+	}
+	
+	
 
 }

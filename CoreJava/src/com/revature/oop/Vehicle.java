@@ -10,7 +10,7 @@ public abstract class Vehicle {
 		this.yearMade = yearMade;
 	}
 
-	public abstract void go();
+	public abstract void go() throws Exception;
 
 	public Vehicle() {
 		super();

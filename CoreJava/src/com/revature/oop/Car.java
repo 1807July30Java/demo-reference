@@ -3,9 +3,9 @@ package com.revature.oop;
 import com.revature.exception.OutOfFuelException;
 
 public class Car extends Vehicle implements Steerable {
-	
-	public Car(int yearMade, int tankPercentage) {
-		super(yearMade);
+
+	public Car(int yearMade, String manufacturer, int tankPercentage) {
+		super(yearMade, manufacturer);
 		this.tankPercentage = tankPercentage;
 	}
 
@@ -32,10 +32,7 @@ public class Car extends Vehicle implements Steerable {
 		this.tankPercentage = tankPercentage;
 	}
 
-	@Override
-	public String toString() {
-		return "Car [tankPercentage=" + tankPercentage + ", yearMade=" + yearMade + "]";
-	}
+	
 
 	@Override
 	public void turnLeft() {
@@ -46,6 +43,12 @@ public class Car extends Vehicle implements Steerable {
 	public void turnRight() {
 		System.out.println("Car is turning right");
 		
+	}
+
+	@Override
+	public String toString() {
+		return "Car [tankPercentage=" + tankPercentage + ", yearMade=" + yearMade + ", manufacturer=" + manufacturer
+				+ "]";
 	}
 
 }

@@ -23,7 +23,10 @@ public class Driver {
 		for (Cave c : caves) {
 			System.out.println(c);
 		}
-
+		
+		//watch out for null caves! 
+		Cave c = cd.getCaveById(2);
+		System.out.println(c);
 	}
 
 }

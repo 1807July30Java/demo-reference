@@ -2,6 +2,7 @@ package com.revature.dao;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -44,7 +45,37 @@ public class CaveDAOImpl implements CaveDAO {
 
 	@Override
 	public Cave getCaveById(int id) {
-		return null;
+		
+		Cave c = null;
+		PreparedStatement pstmt = null;
+		
+		try (Connection con = ConnectionUtil.getConnectionFromFile(filename)){
+			
+			//use a prepared statement
+			String sql = "SELECT * FROM CAVE WHERE CAVE_ID = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			
+			//do something with result 
+			if (rs.next()) {
+				String name = rs.getString("CAVE_NAME");
+				int maxBears = rs.getInt("MAX_BEARS");
+				c = new Cave(id, name, maxBears);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return c;
+	}
+
+	@Override
+	public void saveCave(Cave c) {
+		
 	}
 
 }

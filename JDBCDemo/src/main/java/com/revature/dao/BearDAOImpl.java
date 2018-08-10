@@ -1,6 +1,7 @@
 package com.revature.dao;
 
 import java.io.IOException;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,12 +20,16 @@ public class BearDAOImpl implements BearDAO {
 	
 private static String filename = "connection.properties";
 	
+	//note: this is not the most efficient way to construct our bears! 
+	//making multiple queries for each Bear entry
 	@Override
 	public List<Bear> getBears() {
 		List<Bear> bl = new ArrayList<>();
 		CaveDAOImpl cdi = new CaveDAOImpl();
 		BearTypeDAOImpl btdi = new BearTypeDAOImpl();
 		try(Connection con = ConnectionUtil.getConnectionFromFile(filename)){
+			//could write a join instead, with all information that is actually needed 
+			//(and not make any calls to CaveDAO or BearTypeDAO)
 			String sql = "SELECT * FROM BEAR";
 			Statement statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
@@ -76,6 +81,33 @@ private static String filename = "connection.properties";
 			e1.printStackTrace();
 		}
 		return bear;
+	}
+
+	@Override
+	public double feedBear(int bearId, int hiveId, double amt) {
+		double amtFed = 0;
+		CallableStatement cs = null;
+		
+		try(Connection con = ConnectionUtil.getConnectionFromFile(filename)){
+			
+			String sql = "{call SP_FEED_BEAR(?,?,?,?)}";
+			cs = con.prepareCall(sql);
+			cs.setInt(1, bearId);
+			cs.setInt(2, hiveId);
+			cs.setDouble(3, amt);
+			cs.registerOutParameter(4,java.sql.Types.DECIMAL);
+			cs.execute();
+			amtFed = cs.getDouble(4);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return amtFed;
 	}
 	
 }

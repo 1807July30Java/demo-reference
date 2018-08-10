@@ -27,7 +27,7 @@ public class BearTypeDAOImpl implements BearTypeDAO {
 			while (rs.next()) {
 				int id = rs.getInt("BEAR_TYPE_ID");
 				String name = rs.getString("BEAR_TYPE_NAME");
-				String sp = rs.getString("SURVIVAL_PROCEDURE");
+				String sp = rs.getString("SURVIVAL");
 				BearType newBT = new BearType(id, name, sp);
 				btl.add(newBT);
 			}
@@ -51,7 +51,7 @@ public class BearTypeDAOImpl implements BearTypeDAO {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				String name = rs.getString("BEAR_TYPE_NAME");
-				String sp = rs.getString("SURVIVAL_PROCEDURE");
+				String sp = rs.getString("SURVIVAL");
 				bt = new BearType(id, name, sp);
 			}
 			con.close();

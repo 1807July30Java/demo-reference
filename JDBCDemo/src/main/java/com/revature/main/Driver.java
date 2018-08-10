@@ -17,7 +17,7 @@ public class Driver {
 
 	public static void main(String[] args) {
 		
-		funWithCallableStatements();
+		init();
 	
 	}
 	
@@ -51,11 +51,14 @@ public class Driver {
 		Cave c = cd.getCaveById(2);
 		System.out.println(c);
 		
-		BearDAO bd = new BearDAOImpl();
+		//get some warning logs 
+		Cave c1 = cd.getCaveById(70);
+		cd.saveCave(null);
+		/*BearDAO bd = new BearDAOImpl();
 		List<Bear> bears = bd.getBears();
 		for (Bear b : bears) {
 			System.out.println(b);
-		}
+		}*/
 		
 	}
 

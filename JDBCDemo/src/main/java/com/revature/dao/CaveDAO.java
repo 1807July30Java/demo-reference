@@ -8,6 +8,6 @@ public interface CaveDAO {
 	
 	public List<Cave> getCaves();
 	public Cave getCaveById(int id);
-	public void saveCave(Cave c);
+	public boolean saveCave(Cave c);
 
 }

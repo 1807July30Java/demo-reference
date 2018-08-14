@@ -1,0 +1,17 @@
+div {
+    background-color: #0c0040;
+    /*opacity: .5;*/
+}
+
+#hemingwayCat {
+    display: block;
+    margin: 20px;
+    padding: 20px;
+    border-style: solid;
+    border-color: #4e1500;
+    border-width: 15px;
+}
+
+.bobRoss {
+    background-image: url("https://static-cdn.jtvnw.net/jtv_user_pictures/bobross-profile_image-0b9dd167a9bb16b5-300x300.jpeg");
+}

@@ -3,7 +3,7 @@ div {
     /*opacity: .5;*/
 }
 
-#hemingwayCat {
+.hemingwayCat {
     display: block;
     margin: 20px;
     padding: 20px;

@@ -12,4 +12,8 @@ window.onload = function() {
         document.getElementById("mouseY").innerText = event.clientY;
     }
 
+    //Canceling events: 
+    //check if event.cancelable. If true, preventDefault()
+    //use stopPropagation() to prevent propagation beyond a certain element
+    //use returnFalse()
 }

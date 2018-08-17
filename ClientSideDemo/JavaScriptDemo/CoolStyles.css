@@ -2,5 +2,11 @@
     border: solid black 5px;
     margin: 20px;
     padding: 20px;
-    background-color: #73ab45;
+    background-color: #45a8ab;
+}
+
+#toggleDiv {
+    height: 100px;
+    width: 100px;
+    margin: 20px;
 }

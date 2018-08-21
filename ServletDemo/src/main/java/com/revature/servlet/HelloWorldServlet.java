@@ -3,6 +3,7 @@ package com.revature.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +18,16 @@ public class HelloWorldServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// PrintWriter - object obtained from response object 
+
+		// PrintWriter - object obtained from response object
 		// allows us to write directly to HTTP response's body
-		PrintWriter pw = resp.getWriter();
-		pw.println("<h1>Hello World!</h1>");
-		pw.println("<h3>testing 1 2 3</h3>");
+		/*
+		 * PrintWriter pw = resp.getWriter(); pw.println("<h1>Hello World!</h1>");
+		 * pw.println("<h3>testing 1 2 3</h3>");
+		 */
+
+		// forward the request to our HelloWorld.html page from "hello"
+		RequestDispatcher rd = req.getRequestDispatcher("helloWorld.html");
+		rd.forward(req, resp);
 	}
 }

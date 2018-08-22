@@ -2,19 +2,43 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>ServletDemo</display-name>
   <servlet>
-  	<servlet-name>HelloWorld</servlet-name>
-  	<servlet-class>com.revature.servlet.HelloWorldServlet</servlet-class>
+    <servlet-name>HelloWorld</servlet-name>
+    <servlet-class>com.revature.servlet.HelloWorldServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>HelloWorld</servlet-name>
-  	<url-pattern>/hello</url-pattern>
+    <servlet-name>HelloWorld</servlet-name>
+    <url-pattern>/hello</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>Login</servlet-name>
-  	<servlet-class>com.revature.servlet.LoginServlet</servlet-class>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.revature.servlet.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Login</servlet-name>
-  	<url-pattern>/login</url-pattern>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.revature.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SessionServlet</servlet-name>
+    <servlet-class>com.revature.servlet.SessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionServlet</servlet-name>
+    <url-pattern>/session</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ProfileServlet</servlet-name>
+    <servlet-class>com.revature.servlet.ProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProfileServlet</servlet-name>
+    <url-pattern>/profile</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.revature.service.AuthenticationService;
 
@@ -26,15 +27,19 @@ public class LoginServlet extends HttpServlet {
 	// perform authentication for POST request
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
 		PrintWriter pw = resp.getWriter();
 		resp.setContentType("text/html");
 		//grab params from request
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		if (AuthenticationService.isValidUser(username, password)) {
-			pw.println("welcome, "+username);
-			pw.println("<a href=\"helloWorld.html\">Go Back</a>");
+			//pw.println("welcome, "+username);
+			//pw.println("<a href=\"helloWorld.html\">Go Back</a>");
+			session.setAttribute("username", username);
+			session.setAttribute("problem", null);
 		} else {
+			session.setAttribute("problem", "incorrect password");
 			resp.sendRedirect("login");
 		}
 	}

@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		PrintWriter pw = resp.getWriter();
+		//PrintWriter pw = resp.getWriter();
 		resp.setContentType("text/html");
 		//grab params from request
 		String username = req.getParameter("username");
@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
 			//pw.println("<a href=\"helloWorld.html\">Go Back</a>");
 			session.setAttribute("username", username);
 			session.setAttribute("problem", null);
+			resp.sendRedirect("profile");
 		} else {
 			session.setAttribute("problem", "incorrect password");
 			resp.sendRedirect("login");

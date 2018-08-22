@@ -25,7 +25,10 @@ public class HelloWorldServlet extends HttpServlet {
 		 * PrintWriter pw = resp.getWriter(); pw.println("<h1>Hello World!</h1>");
 		 * pw.println("<h3>testing 1 2 3</h3>");
 		 */
-
+		
+		//to access servlet config, getServletConfig().getInitParameter
+		//to access servlet context, getServletContext().getInitParameter
+		
 		// forward the request to our HelloWorld.html page from "hello"
 		RequestDispatcher rd = req.getRequestDispatcher("helloWorld.html");
 		rd.forward(req, resp);

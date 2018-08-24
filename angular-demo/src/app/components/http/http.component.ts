@@ -29,12 +29,15 @@ import { BearList } from '../../models/bear-list.model';
           );
       }
 
-    getBears(): void {
-        this.bears = this.bearService.fetchAllBears().bears;
-    }
-
+      getBears(): void {
+        this.bearService.fetchAllBears()
+          .subscribe(
+            (bearList: BearList) => { this.bears = bearList.bears; },
+            error => { console.log(error); }
+          );
+      }
      // if we want to make the call when component is created
   ngOnInit() {
     this.getBearInformation();
   }
-  }
+}

@@ -17,10 +17,8 @@ export class BearService {
         return this.httpClient.get<Bear>(`https://pokeapi.co/api/v2/pokemon/${id}`);
     }
 
-    // get list of bears
-    public fetchAllBears(): BearList {
-        const bear1 = new Bear(3, "Steve", new Cave(5, "Camp Awesome", 7), new BearType(8, "Grizzly"), 400, new Date());
-        const bear2 = new Bear(8, "Nick", new Cave(5, "Camp Awesome", 7), new BearType(8, "Grizzly"), 600, new Date());
-        return new BearList([bear1, bear2]);
-    }
+    // get all bears, for real, from our backend. using HttpClient, newer version of HttpModule
+  public fetchAllBears(): Observable<BearList> {
+    return this.httpClient.get<BearList>('URL TO YOUR LOCALLY DEPLOYED SERVLETDEMO ENDPOINT');
+  }
 }

@@ -21,6 +21,9 @@ import { DiComponent } from './components/di/di.component';
 import { ServiceComponent } from './components/service/service.component';
 import { AngularJSComponent } from './components/angularjs/angularjs.component';
 import { DatabindingComponent } from './components/databinding/databinding.component';
+import { StructuralComponent } from './components/structural/structural.component';
+import { PipeComponent } from './components/pipe/pipe.component';
+import { HttpComponent } from './components/http/http.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -41,7 +44,10 @@ export const routes: Routes = [
   { path: 'di',  component: DiComponent },
   { path: 'service',  component: ServiceComponent },
   { path: 'angularjs',  component: AngularJSComponent },
-  { path: 'databinding', component: DatabindingComponent},
+  { path: 'databinding', component: DatabindingComponent },
+  { path: 'structural', component: StructuralComponent },
+  { path: 'pipe', component: PipeComponent },
+  { path: 'http', component: HttpComponent },
   { path: '**', redirectTo: '/main' }
 ];
 

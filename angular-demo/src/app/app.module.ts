@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 
@@ -27,6 +27,14 @@ import { DiComponent } from './components/di/di.component';
 import { ServiceComponent } from './components/service/service.component';
 import { AngularJSComponent } from './components/angularjs/angularjs.component';
 import { DatabindingComponent } from './components/databinding/databinding.component';
+import { StructuralComponent } from './components/structural/structural.component';
+import { FlashcardComponent } from './components/structural/flashcard/flashcard.component';
+import { PipeComponent } from './components/pipe/pipe.component';
+
+// services
+import { BearService } from './services/bear.service';
+
+import { HttpComponent } from './components/http/http.component';
 
 @NgModule({
   declarations: [
@@ -49,15 +57,20 @@ import { DatabindingComponent } from './components/databinding/databinding.compo
     DiComponent,
     ServiceComponent,
     AngularJSComponent,
-    DatabindingComponent
+    DatabindingComponent,
+    StructuralComponent,
+    FlashcardComponent,
+    PipeComponent,
+    HttpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [BearService],
+  // bootstrapping: tell Angular which component to load as root component
   bootstrap: [AppComponent]
 })
 export class AppModule { }

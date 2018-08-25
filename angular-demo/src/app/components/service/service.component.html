@@ -7,7 +7,7 @@
         <div class="list-group">
             <div class="list-group-item">
                 <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                They contain <strong>functionality</strong> of our application.
+                A Service is a class that is not dependent on any particular component which is used to provide shared data, logic across components, and encapsulate external interactions.
             </div>
             <div class="list-group-item">
                 <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
@@ -24,6 +24,15 @@
             <div class="list-group-item">
                 <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                 We <strong>inject</strong> services into components with <strong>Dependency Injection</strong>.
+            </div>
+            <div class="list-group-item">
+                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+               How to create a service: 
+               <ol>
+                   <li>Create a class, decorate it with the @Injectable decorator, and export it.</li>
+                   <li>Register the provider. A <strong>provider</strong> is code that can create or return a service. Add the service to the providers property in either @Component (=> injectable to component and its children) or @NgModule (=> injectable everywhere within module). </li>
+                   <li>Inject the service into the desired component via its constructor (similar to Java, every class has an implicit noargs constructor and we may define a constructor with arguments to be used in its place). e.g. constructor(private myService: MyService)</li>
+                </ol>
             </div>
         </div>
     </div>

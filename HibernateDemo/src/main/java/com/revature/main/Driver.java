@@ -14,6 +14,8 @@ public class Driver {
 		
 		System.out.println(s.getStatistics());
 		
+		//System.out.println(s.createQuery("from Cave").list());
+		
 		s.close();
 
 	}

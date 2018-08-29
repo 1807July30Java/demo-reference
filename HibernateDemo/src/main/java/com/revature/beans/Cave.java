@@ -1,19 +1,22 @@
 package com.revature.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Entity 
-@Table(name="CAVE")
+@Entity
+@Table(name = "CAVE")
 public class Cave implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -24,7 +27,7 @@ public class Cave implements Serializable {
 		this.name = name;
 		this.maxBears = maxBears;
 	}
-	
+
 	public Cave(int id, String name, int maxBears) {
 		super();
 		this.id = id;
@@ -33,14 +36,18 @@ public class Cave implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="caveSequence")
-	@SequenceGenerator(allocationSize=25,name="caveSequence",sequenceName="SQ_CAVE_PK")
-	@Column(name="CAVE_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "caveSequence")
+	@SequenceGenerator(allocationSize = 25, name = "caveSequence", sequenceName = "SQ_CAVE_PK")
+	@Column(name = "CAVE_ID")
 	private int id;
-	@Column(name="CAVE_NAME")
+	@Column(name = "CAVE_NAME")
 	private String name;
-	@Column(name="MAX_BEARS")
+	@Column(name = "MAX_BEARS")
 	private int maxBears;
+
+	// bidirectional mapping, lazily fetched
+	@OneToMany(mappedBy = "cave", fetch = FetchType.LAZY)
+	private List<Bear> bears;
 
 	public Cave() {
 	}

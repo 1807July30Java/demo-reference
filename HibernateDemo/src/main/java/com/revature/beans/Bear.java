@@ -2,6 +2,7 @@ package com.revature.beans;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,23 +18,21 @@ import javax.persistence.Table;
 @Table(name = "BEAR")
 public class Bear {
 
-	public Bear(String name, Cave cave, BearType bearType, int weight, LocalDate localDate) {
+	public Bear(String name, Cave cave, BearType bearType, int weight) {
 		super();
 		this.name = name;
 		this.cave = cave;
 		this.bearType = bearType;
 		this.weight = weight;
-		this.birthdate = localDate;
 	}
 
-	public Bear(int id, String name, Cave cave, BearType bearType, int weight, LocalDate birthdate) {
+	public Bear(int id, String name, Cave cave, BearType bearType, int weight) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cave = cave;
 		this.bearType = bearType;
 		this.weight = weight;
-		this.birthdate = birthdate;
 	}
 
 	public Bear() {
@@ -49,14 +48,11 @@ public class Bear {
 	private String name;
 	@Column(name = "WEIGHT")
 	private int weight;
-	@Column(name = "BEARTHDATE")
-	private LocalDate birthdate;
-
 	// establish relationships with Cave and BearType
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "CAVE_ID")
 	private Cave cave;
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "BEAR_TYPE_ID")
 	private BearType bearType;
 
@@ -100,17 +96,9 @@ public class Bear {
 		this.weight = weight;
 	}
 
-	public LocalDate getBirthdate() {
-		return birthdate;
-	}
-
-	public void setBirthdate(LocalDate birthdate) {
-		this.birthdate = birthdate;
-	}
-
 	@Override
 	public String toString() {
 		return "Bear [id=" + id + ", name=" + name + ", cave=" + cave + ", bearType=" + bearType + ", weight=" + weight
-				+ ", birthdate=" + birthdate + "]";
+				+ "]";
 	}
 }

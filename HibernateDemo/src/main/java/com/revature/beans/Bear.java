@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-import java.time.LocalDate;
+import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,7 +16,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "BEAR")
-public class Bear {
+public class Bear implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3163023788980788383L;
 
 	public Bear(String name, Cave cave, BearType bearType, int weight) {
 		super();

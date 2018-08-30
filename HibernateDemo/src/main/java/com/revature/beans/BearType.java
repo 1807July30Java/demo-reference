@@ -1,5 +1,6 @@
 package com.revature.beans;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,7 +15,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "BEAR_TYPE")
-public class BearType {
+public class BearType implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4543895622544198787L;
 
 	public BearType(String name) {
 		super();

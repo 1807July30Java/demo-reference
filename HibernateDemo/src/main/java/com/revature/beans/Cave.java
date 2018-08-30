@@ -49,6 +49,10 @@ public class Cave implements Serializable {
 	@OneToMany(mappedBy = "cave", fetch = FetchType.LAZY)
 	private List<Bear> bears;
 
+	public List<Bear> getBears() {
+		return bears;
+	}
+
 	public Cave() {
 	}
 

@@ -11,8 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+//import org.hibernate.annotations.CascadeType;
+
+@NamedQueries(
+		{
+			@NamedQuery(name="findBearsByType", query="from Bear where bearType= :typeVar")
+		})
 
 @Entity
 @Table(name = "BEAR")
@@ -54,10 +63,11 @@ public class Bear implements Serializable {
 	@Column(name = "WEIGHT")
 	private int weight;
 	// establish relationships with Cave and BearType
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	//@Cascade({CascadeType.DELETE, CascadeType.SAVE_UPDATE})
 	@JoinColumn(name = "CAVE_ID")
 	private Cave cave;
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "BEAR_TYPE_ID")
 	private BearType bearType;
 

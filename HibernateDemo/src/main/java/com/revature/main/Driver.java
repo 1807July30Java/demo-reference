@@ -1,5 +1,9 @@
 package com.revature.main;
 
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -19,7 +23,9 @@ public class Driver {
 			// init(sf);
 			// getVsLoad(sf);
 			// saveVsPersist(sf);
-			updateVsMerge(sf);
+			//updateVsMerge(sf);
+			//funWithNamedQuery(sf);
+			funWithCascadesAndCacheing(sf);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -122,5 +128,37 @@ public class Driver {
 		}
 		s2.close();
 	}
-
+	
+	static void funWithNamedQuery(SessionFactory sf) {
+		Session s = sf.openSession();
+		Query q = s.getNamedQuery("findBearsByType");
+		q.setInteger("typeVar", 75);
+		List<Bear> bl = q.list();
+		System.out.println(bl.size());
+		Iterator<Bear> itr = bl.iterator();
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+		s.close();
+	}
+	
+	static void funWithCascadesAndCacheing(SessionFactory sf) {
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		Cave c = (Cave) s.get(Cave.class, 175);
+		BearType bt = (BearType) s.get(BearType.class, 75);
+		Bear b = new Bear("Ferdinand", c, bt, 400);
+		//is c in the cache? 
+		System.out.println(s.contains(c));
+		//remove from cache
+		/*s.evict(c);
+		System.out.println(s.contains(c));*/
+		//s.persist(b);
+		//Bear b2 = new Bear("Marco2",new Cave("Bronx",6),bt,100);
+		//s.persist(b2);
+		Cave c2 = (Cave) s.get(Cave.class,300);
+		s.delete(c2);
+		tx.commit();
+		s.close();
+	}
 }

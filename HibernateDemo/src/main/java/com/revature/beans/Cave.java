@@ -3,6 +3,7 @@ package com.revature.beans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -46,7 +47,7 @@ public class Cave implements Serializable {
 	private int maxBears;
 
 	// bidirectional mapping, lazily fetched
-	@OneToMany(mappedBy = "cave", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "cave", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Bear> bears;
 
 	public List<Bear> getBears() {

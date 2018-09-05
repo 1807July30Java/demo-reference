@@ -10,5 +10,30 @@
 		<property name="id" value="50"></property>
 		<property name="name" value="Queens"></property>
 	</bean>	
+	
+	<bean name="bearWithSetter"
+		class="com.revature.beans.BearWithSetter">
+		<!-- ref is the name of the bean to be injected -->
+		<!-- name is the name of the field in the bean -->
+		<property name="cave" ref="cave"></property>
+	</bean>
 
+	<bean name="bearWithConstructor"
+		class="com.revature.beans.BearWithConstructor">
+		<constructor-arg ref="cave"></constructor-arg>
+	</bean>
+
+	<!-- autowiring: allowing Spring to "automagically" determine dependencies -->
+	<!-- two types: byName (using the bean def. name) and byType (using classname) -->
+
+	<bean name="autoBearByName"
+		class="com.revature.beans.BearWithAutoByName" autowire="byName">
+	</bean>
+	
+	<bean name="autoBearByType"
+		class="com.revature.beans.BearWithAutoByType" autowire="byType">
+	</bean>
+	
+	<context:component-scan base-package="com.revature"></context:component-scan>
+	
 </beans>

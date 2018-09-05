@@ -20,11 +20,9 @@ public abstract class Bear {
 	public Cave getCave() {
 		return cave;
 	}
-	public void setCave(Cave cave) {
+	/*public void setCave(Cave cave) {
 		this.cave = cave;
-	}
-	@Override
-	public String toString() {
-		return "Bear [id=" + id + ", name=" + name + ", cave=" + cave + "]";
-	}
+	}*/
+	
+	public abstract void methodInBear();
 }

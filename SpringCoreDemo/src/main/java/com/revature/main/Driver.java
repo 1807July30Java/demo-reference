@@ -35,6 +35,9 @@ public class Driver {
 	static void funWithCaves(ApplicationContext ac) {
 		Cave c = (Cave) ac.getBean("cave");
 		System.out.println(c.toString());
+		
+		Cave c2 = (Cave) ac.getBean("cave");
+		System.out.println(c2.toString());
 	}
 	
 	static void funWithBears(ApplicationContext ac) {
@@ -52,6 +55,9 @@ public class Driver {
 		
 		Bear b5 = (ComponentScannedBear) ac.getBean("componentScannedBear");
 		b5.methodInBear();
+		
+		Bear b6 = (ComponentScannedBear) ac.getBean("componentScannedBear");
+		b6.methodInBear();
 		
 	}
 

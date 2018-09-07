@@ -6,7 +6,7 @@
 	<display-name>SpringMVCDemo</display-name>
 	<context-param>
 		<param-name>ContextConfigLocation</param-name>
-		<param-value>/WEB-INF/root-context.xml</param-value>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
 	</context-param>
 	<servlet>
 		<servlet-name>MasterServlet</servlet-name>

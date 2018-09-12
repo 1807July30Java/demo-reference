@@ -15,7 +15,7 @@
 	<context:component-scan
 		base-package="com.revature"></context:component-scan>
 
-	<jaxws:endpoint id="flashcard" implementor="com.revature.service.FlashcardImpl" address="/Flashcard"></jaxws:endpoint>
+	<jaxws:endpoint id="flashcard" implementor="com.revature.soap.FlashcardServiceImpl" address="/Flashcard"></jaxws:endpoint>
 
 
 	<!-- data source -->

@@ -37,7 +37,6 @@ public class Driver {
 		factory.getOutInterceptors().add(outInt);
 		inInt.setPrintWriter(new PrintWriter(System.out));
 		outInt.setPrintWriter(new PrintWriter(System.out));
-
 		
 		return (FlashcardService) factory.create();
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jws.WebService;
 
 import com.revature.domain.Flashcard;
+import com.revature.exception.FlashcardException;
 
 @WebService
 public interface FlashcardService {
@@ -16,5 +17,5 @@ public interface FlashcardService {
 
 	public List<Flashcard> getAllFlashcards();
 	
-	public String addFlashcard(Flashcard flashcard);
+	public String addFlashcard(Flashcard flashcard) throws FlashcardException;
 }
